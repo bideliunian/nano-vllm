@@ -2,11 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Environment Notes
+
+- GPU is exposed as `/dev/nvidia2` (minor 2) in this container. Set `CUDA_VISIBLE_DEVICES=0` for torch to find it.
+- `uv` must be installed first: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- After `uv sync`, run `uv pip install setuptools` — triton's AMD backend requires it at runtime.
+
 ## Commands
 
 ```bash
 # Install dependencies
 uv sync
+uv pip install setuptools   # required by triton at runtime
 
 # Run inference example
 python example.py

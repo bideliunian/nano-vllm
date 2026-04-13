@@ -1,0 +1,11 @@
+commit	decode_throughput	memory_gb	status	description
+e51e593	7626.00	20.4	keep	baseline (max_num_seqs=512, max_num_batched_tokens=16384, block_size=256, gpu_mem=0.9)
+3d9b4fe	10349.22	20.6	keep	max_num_seqs=768 (+35.7% vs baseline)
+1c21d0a	10039.55	20.6	discard	max_num_seqs=1024 (preemption overhead hurts)
+e8efd71	10967.82	20.5	keep	max_num_batched_tokens=32768 (+6.0% over exp1)
+4a9db1b	11037.69	20.6	keep	max_num_batched_tokens=65536 (marginal +0.6%)
+9968734	10988.24	21.8	discard	gpu_memory_utilization=0.95 (more memory, slightly slower)
+4d9c161	10888.82	20.6	discard	finer graph ladder [1..8 step 1, 10,12,14,16, +16] (compilation overhead > padding savings)
+dbdef93	10651.80	19.0	discard	chunked prefill cap 4096 tok/step (lower memory but throughput hurt)
+64e88c3	0.00	0.0	crash	kvcache_block_size=512 — BUG: Sequence.block_size hardcoded=256 at sequence.py:15; slot_mapping mismatch
+0329b99	10993.02	20.6	discard	CUDA graph max_bs+eager threshold 512→768 (capture overhead > graph replay gain)
