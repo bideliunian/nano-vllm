@@ -17,7 +17,7 @@ directly and commit those alongside any changes here.
 
 def get_engine_kwargs() -> dict:
     return dict(
-        max_num_batched_tokens=16384,  # prefill token budget per scheduler step
+        max_num_batched_tokens=32768,  # prefill token budget per scheduler step
         max_num_seqs=768,              # max concurrent sequences in the scheduler
         gpu_memory_utilization=0.9,    # fraction of GPU memory reserved for KV cache
         kvcache_block_size=256,        # tokens per KV cache block (must be multiple of 256)
