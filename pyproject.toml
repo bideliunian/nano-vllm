@@ -30,7 +30,7 @@ Homepage="https://github.com/GeeeekExplorer/nano-vllm"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["nanovllm*"]
+include = ["nanovllm*", "autorefine*"]
 
 [tool.uv]
 find-links = ["https://download.pytorch.org/whl/cu124"]
